@@ -4,9 +4,13 @@ Welcome to padepy!
 
 padepy is a Python library for Padé approximation calculation with infinite (algebric) and finite (floating) precision. The current version support to methods: a direct method, in Frobenius sense, and Baker's recursive algorithm. ::
 
-=================================
+
 Brief history
-=================================
+=============
+
+
+Brief history
+-------------
 
 A rational function matching a formal power series, at least to the term equal to the sum of denominator and numerator degree, is called a Padé approximant of that series. The name was given after Henri Padé (1863-1953) who did the first systematic study of this rational approximation in his PhD thesis [1]. However in the sec XVIII, this technique was discovered, independently, by Johann Lambert (1728-1777) and Joseph Lagrange (1736-1813). Carl Jacobi (1804 - 1851) presented a ratio of determinants to calculate a Padé approximant, and George Frobenius proved recursive relations between adjacent approximants. 
 
