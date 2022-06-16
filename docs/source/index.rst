@@ -7,4 +7,5 @@ padepy is a Python library for Padé approximation calculation with infinite (al
 .. toctree::
 
    intro
-   history 
+   history
+   usage
