@@ -2,12 +2,12 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'padepy'
+copyright = '2022, Rafael'
+author = 'Rafael Pereira da Silva'
 
 release = '0.1'
-version = '0.1.0'
+version = '0.1'
 
 # -- General configuration
 
