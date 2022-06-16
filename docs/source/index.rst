@@ -5,5 +5,4 @@
    usage
 
 
-Welcome
-=======
+.. include:: intro.rst
