@@ -1,5 +1,7 @@
+Content
+=======
 .. toctree::
 
-   intro
+   welcome
    history
    usage
