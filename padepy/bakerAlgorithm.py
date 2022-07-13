@@ -70,6 +70,11 @@ def truncSeries(obj, p, q, decPrecision):
 
 
 def pade(p, q, obj = [], decPrecision = 0, notFullPath = True):
+    """
+    Return the [p/q](x) Padé approximant
+    :param p: Numerator degree
+    :type p: integer
+    """
     if type(decPrecision) != int or type(p) != int or type(q) != int:
         print(
             "Numerator and Denominator degree, and decimal precision must be a integer.",
