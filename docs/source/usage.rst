@@ -1,7 +1,4 @@
 Usage
 =====
 
-.. autosummary::
-   :toctree: generated
-   
-   bakerAlgorithm
+.. automethod:: bakerAlgorithm::pade
