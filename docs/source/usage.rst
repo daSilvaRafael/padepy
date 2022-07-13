@@ -1,7 +1,7 @@
 Usage
 =====
 
-Installation
-------------
-
-.. autofunction:: bakerAlgorithm.pade
+.. autosummary::
+   :toctree: generated
+   
+   bakerAlgorithm
