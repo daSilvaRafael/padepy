@@ -4,4 +4,4 @@ Usage
 Installation
 ------------
 
-.. autofunction:: padepy.bakerAlgorithm.pade
+.. autofunction:: bakerAlgorithm.pade
