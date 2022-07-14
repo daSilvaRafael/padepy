@@ -1,75 +1,10 @@
 import sympy as sp
 
 
-def r(a, b):
-    return sp.Rational(a) / sp.Rational(b)
-
-
-def taylorCoef(func, n):
-    coef = []
-    for col in range(0, n + 1):
-        derivative = sp.diff(func, x, col)
-        derivativeAtZero = derivative.subs(x, 0)
-        coef.append(derivativeAtZero / sp.Rational(sp.factorial(col)))
-    return coef
-
-
-def truncSeries(obj, p, q, decPrecision):
-    n = p + q
-    an = sp.zeros(n + 1, 1)
-    fx = sp.zeros(1, n + 1)
-    try:
-        if type(obj) is list:
-            elements = obj.copy()
-            elements.sort()
-            if len(obj) >= n + 1:
-                for col in range(0, n + 1):
-                    coef = obj[col]
-                    fx[col] = x**col
-                    if decPrecision:
-                        an[col] = sp.N(coef, decPrecision)
-                    else:
-                        an[col] = coef
-            else:
-                print(
-                    f"Error: To construct the Pade [{p},{p}]",
-                    "the number of input coefficients needs to be equal to",
-                    f"p + q + 1 = {p + q + 1}",
-                    f"The input list as {len(obj)} coefficients.",
-                )
-                return None
-            Sn = fx * an
-            return Sn
-        elif type(obj) == tuple:
-            print(f"obj = {obj}")
-            print(
-                f"Error: obj type = {type(obj)}. The obj input must be a function or a list of real numbers."
-            )
-            return None
-        else:
-            for col in range(0, n + 1):
-                fx[col] = x**col
-                derivative = sp.diff(obj, x, col)
-                derivativeAtZero = derivative.subs(x, 0)
-                factorialN = sp.factorial(col)
-                if decPrecision:
-                    an_float = sp.N(derivativeAtZero, decPrecision) / sp.N(
-                        factorialN, decPrecision
-                    )
-                    an[col] = an_float
-                else:
-                    an[col] = derivativeAtZero / sp.Rational(factorialN)
-            Sn = fx * an
-            return Sn
-    except TypeError:
-        print(f"obj = {obj}")
-        print(
-            f"The obj type = {type(obj)}. The obj input must be a function or list of real numbers.",
-        )
-        return None
-
-
 def pade(p, q, obj = [], decPrecision = 0, notFullPath = True):
+    """
+    p: int
+    """
     if type(decPrecision) != int or type(p) != int or type(q) != int:
         print(
             "Numerator and Denominator degree, and decimal precision must be a integer.",
