@@ -206,7 +206,7 @@ def pade(p, q, obj = [], decPrecision = 0, notFullPath = True):
     print(f"Pade [{p},{q}](x) stored at matrix index {padeIndex}.")
     return (Pades[padeIndex], Pades)
 
-
+"""
 if __name__ == "__main__":
     x = sp.Symbol("x")
     print()
@@ -216,3 +216,4 @@ if __name__ == "__main__":
     print()
 else:
     x = sp.Symbol("x")
+"""
