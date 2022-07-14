@@ -1,7 +1,7 @@
 # Configuration file for the Sphinx documentation builder.
 import sys
 import os
-sys.path.insert(0, os.path.abspath("./padepy/padepy"))
+sys.path.insert(0, os.path.abspath(".../padepy"))
 # -- Project information
 
 project = 'padepy'
