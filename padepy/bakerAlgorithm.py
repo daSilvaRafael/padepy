@@ -6,15 +6,6 @@ def r(a, b):
 
 
 def taylorCoef(func, n):
-    """
-    Return a list of random ingredients as strings.
-
-    :param kind: Optional "kind" of ingredients.
-    :type kind: list[str] or None
-    :raise lumache.InvalidKindError: If the kind is invalid.
-    :return: The ingredients list.
-    :rtype: list[str]
-    """
     coef = []
     for col in range(0, n + 1):
         derivative = sp.diff(func, x, col)
@@ -84,10 +75,6 @@ def pade(p, q, obj = [], decPrecision = 0, notFullPath = True):
     Parameters
     ----------
     p : int
-
-    Returns
-    -------
-    pandas.Dataframe
 
     """
     if type(decPrecision) != int or type(p) != int or type(q) != int:
