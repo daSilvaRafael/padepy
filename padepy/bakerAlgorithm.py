@@ -71,9 +71,15 @@ def truncSeries(obj, p, q, decPrecision):
 
 def pade(p, q, obj = [], decPrecision = 0, notFullPath = True):
     """
-    Return the [p/q](x) Padé approximant
-    :param p: Numerator degree
-    :type p: integer
+    
+    Parameters
+    ----------
+    p : int
+
+    Returns
+    -------
+    pandas.Dataframe
+
     """
     if type(decPrecision) != int or type(p) != int or type(q) != int:
         print(
@@ -206,7 +212,7 @@ def pade(p, q, obj = [], decPrecision = 0, notFullPath = True):
     print(f"Pade [{p},{q}](x) stored at matrix index {padeIndex}.")
     return (Pades[padeIndex], Pades)
 
-"""
+
 if __name__ == "__main__":
     x = sp.Symbol("x")
     print()
@@ -216,4 +222,4 @@ if __name__ == "__main__":
     print()
 else:
     x = sp.Symbol("x")
-"""
+
