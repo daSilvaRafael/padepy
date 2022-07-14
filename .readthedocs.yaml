@@ -13,3 +13,6 @@ sphinx:
 formats:
   - pdf
   - epub
+  
+submodules:
+  include: all
