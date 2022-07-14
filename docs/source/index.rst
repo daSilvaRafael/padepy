@@ -1,5 +1,9 @@
 Content
 =======
+
+.. automodule:: padepy.bakerAlgorithm
+   :members:
+
 .. toctree::
    :maxdepth: 4
    
