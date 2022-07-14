@@ -3,5 +3,9 @@ Usage
 
 Usage
 -----
-.. autofunction:: bakerAlgorithm.pade
+.. automodule:: bakerAlgorithm.pade
+
+.. automodule:: padepy.bakerAlgorithm.pade
+
+.. automodule:: pade
 
