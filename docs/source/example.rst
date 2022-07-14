@@ -1,2 +1,7 @@
-Examples
-========
+API
+===
+
+.. autosummary::
+   :toctree: generated
+
+   bakerAlgorithm
