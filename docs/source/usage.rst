@@ -1,8 +1,7 @@
 Usage
 =====
 
-.. automodule:: padepy.bakerAlgorithm
-   :imported-members:
+.. automodule:: bakerAlgorithm
    :members:
    :undoc-members:
    :show-inheritance:
