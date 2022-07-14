@@ -1,7 +1,8 @@
 # Configuration file for the Sphinx documentation builder.
 import sys
 import os
-sys.path.insert(0, os.path.abspath('../padepy/bakerAlgorithm.py'))
+sys.path.insert(0, os.path.abspath('../'))
+sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information
 
 project = 'padepy'
@@ -16,6 +17,7 @@ version = '0.1'
 extensions = [
     'sphinx.ext.duration',
     'sphinx.ext.doctest',
+    'sphinx.ext.viewcode',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
