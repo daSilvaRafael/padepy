@@ -1,4 +1,4 @@
 Usage
 =====
 
-.. automodule:: bakerAlgorithm
+.. automodule:: bakerAlgorithm.pade
