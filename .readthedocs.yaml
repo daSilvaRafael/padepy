@@ -10,8 +10,4 @@ sphinx:
    builder: html
    fail_on_warning: false
 
-python:
-   install:
-     - method: pip
-       path: .
-     - requirements: requirements.txt
+
