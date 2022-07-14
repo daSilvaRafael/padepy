@@ -2,8 +2,7 @@
 import sys
 import os
 
-sys.path.insert(0, os.path.abspath('.../padepy/'))
-sys.path.insert(0, os.path.abspath('...padepy/bakerAlgorithm'))
+sys.path.insert(0, os.path.abspath('../padepy/'))
 # -- Project information
 
 project = 'padepy'
