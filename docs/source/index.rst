@@ -9,5 +9,4 @@ Content
    
    welcome
    history
-   usage
    example
