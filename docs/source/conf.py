@@ -2,7 +2,7 @@
 import sys
 import os
 sys.path.insert(0, os.path.abspath('../../padepy'))
-import sympy as sp
+import sympy 
 # -- Project information
 
 project = 'padepy'
