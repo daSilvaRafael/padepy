@@ -1,4 +1,4 @@
-API
+AP
 ===
 
 .. automodule:: bakerAlgorithm
