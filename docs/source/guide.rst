@@ -1,13 +1,9 @@
 How-to
 ======
 
-Instalation
------------
-
-
-   
-Examples
---------
+.. toctree::
+    
+   example
 
 
 

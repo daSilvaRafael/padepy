@@ -2,6 +2,7 @@
 import sys
 import os
 sys.path.insert(0, os.path.abspath('../../padepy'))
+sys.path.insert(0, os.path.abspath('../..'))
 #import sympy 
 # -- Project information
 
@@ -20,6 +21,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
+    "nbsphinx",
 ]
 
 intersphinx_mapping = {
@@ -34,8 +36,6 @@ templates_path = ['_templates']
 
 html_theme = 'sphinx_rtd_theme'
 
-html_theme_options = {
-    'prev_next_buttons_location': None
-}
+
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
