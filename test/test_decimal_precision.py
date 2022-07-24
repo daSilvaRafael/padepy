@@ -1,5 +1,5 @@
 import unittest
-from padepy import directAlgorithm as da
+from padepy import direct_algorithm as da
 import sympy as sp
 
 

@@ -1,8 +1,8 @@
 import unittest
 import sympy as sp
-from padepy import directAlgorithm as da
-from padepy import bakerAlgorithm as ba
-from padepy.directAlgorithm import r
+from padepy import direct_algorithm as da
+from padepy import baker_algorithm as ba
+from padepy.direct_algorithm import rational_number as r
 
 x = sp.Symbol("x")
 

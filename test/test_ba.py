@@ -1,5 +1,5 @@
 import unittest
-from padepy import bakerAlgorithm as ba
+from padepy import baker_algorithm as ba
 import sympy as sp
 
 
