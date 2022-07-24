@@ -1,5 +1,0 @@
-AP
-===
-
-.. automodule:: bakerAlgorithm
-   :members:
