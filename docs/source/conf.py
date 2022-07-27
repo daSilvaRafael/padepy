@@ -2,8 +2,7 @@
 import sys
 import os
 sys.path.insert(0, os.path.abspath('../../padepy'))
-sys.path.insert(0, os.path.abspath('../..'))
-#import sympy 
+
 # -- Project information
 
 project = 'padepy'
@@ -34,11 +33,11 @@ templates_path = ['_templates']
 
 # -- Options for HTML output
 
-#html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinx_rtd_theme'
 
-#html_theme_options = {
-#    'prev_next_buttons_location': None
-#}
+html_theme_options = {
+    'prev_next_buttons_location': None
+}
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
