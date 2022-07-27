@@ -8,27 +8,36 @@ def pade(p, q, var, obj=[], float_precision=0, not_full_path=True):
     """Function to construct the [p/q](x) Padé approximant using the 
     Baker's recursive algorithm.
     
-    Args:
-        p (int): degree of the Padé approximant numerator
-        
-        q (int): degree of the Padé approximant denominator
-        
-        obj (list, sympy.core.mul.Mul or sympy bulti-in function): The obj parameter 
-        can be a list of real number, a user defined function, or sympy bulti-in function 
-        like sin, cos, log, and exp. The default empty list allows to calculate some Padé approximants expressions with unknown coefficients. 
-        
-        float_precision (int): floating point precision. Note that the default value 0 
-        is for infinite (algebric) precicion.
+    :param p: degree of the Padé approximant numerator
+    :type p: int    
+    
+    :param q: degree of the Padé approximant denominator
+    
+    :type q: int    
+    
+    :param  obj: The obj parameter can be a list of real number, a user defined function,
+        or sympy bulti-in function like sin, cos, log, and exp. The default empty list a
+        allows to calculate some Padé approximants generic expressions. 
+    
+    :type obj: (list, sympy.core.mul.Mul or sympy bulti-in function)
 
-        not_full_path (bool): if set to True the Padé approximants from [p/q](x) 
+    :param  float_precision: floating point precision. Note that the default value 0 
+        is for infinite (algebric) precicion.
+   
+    :type float_precision: int
+
+    :param  not_full_path: if set to True the Padé approximants from [p/q](x) 
         to [0/p+q](x) will be costructed. Otherwise the algorithm stops
         once the [p/q](x) is constructed.
+    
+    :type not_full_path: bool
 
-    Returns:
-        tuple(sympy.core.mul.Mul, sympy.matrices.dense.MutableDenseMatrix): The first 
-        return is the [p/q](x) Padé approximant and the second is a matrix with all 
+    
+    :returns: The first return is the [p/q](x) Padé approximant and the second is a matrix with all 
         Padé approcimant contruct until [p/q](x) or all Padé aproximants from [p+q/1](x)
-        to [0/p+q](x) if not_full_pathset to True.    
+        to [0/p+q](x) if not_full_pathset to True.
+
+    :rtype: tuple(sympy.core.mul.Mul, sympy.matrices.dense.MutableDenseMatrix)        
     """
 
     if type(float_precision) != int or type(p) != int or type(q) != int:
