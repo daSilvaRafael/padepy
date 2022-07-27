@@ -1,9 +1,9 @@
 How-to
 ======
 
-.. toctree::
+
     
-   example
+   
 
 
 

@@ -6,4 +6,5 @@ Content
    guide
    usage
    api
+   about
    
