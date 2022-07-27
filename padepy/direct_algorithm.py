@@ -2,55 +2,9 @@ import sympy as sp
 from scipy.linalg import lu_solve
 
 
-def rational_number(a, b):
-    """
-    Function to set rational number.
-    
-    Parameters
-    ----------
-    a: int 
-        Numerator
-
-    b: int
-        Denominator
-    
-    Returns
-    -------
-    sympy.core.numbers.Rational
-        a rational number     
-    """
-    
-    return sp.Rational(a) / sp.Rational(b)
 
 
-def maclaurin_coefficients(func, n):
-    """
-    Function to calculate the first n coefficients
-    of the Maclaurin expansion. 
-    
-    Parameters
-    ----------
-    func: int 
-        function to apply the Maclaurin expansion 
-
-    n: int
-        number of coefficients
-    
-    Returns
-    -------
-    sympy.core.numbers.Rational
-        a rational number     
-    """
-
-    coef = []
-    for coluna in range(0, n + 1):
-        derivada = sp.diff(func, x, coluna)
-        derivadaEmZero = derivada.subs(x, 0)
-        coef.append(derivadaEmZero / sp.Rational(sp.factorial(coluna)))
-    return coef
-
-
-def hankel_matrix(obj, p, q, float_precision=False):
+def hankel_matrix(obj, p, q, var, float_precision=False):
     """
     Function to calculate qxq Hankel matrix.
     
@@ -119,8 +73,8 @@ def hankel_matrix(obj, p, q, float_precision=False):
                         else:
                             A[line, col] = 0
                     else:
-                        derivative = sp.diff(obj, x, p - q + col + line + 1)
-                        derivativeAtZero = derivative.subs(x, 0)
+                        derivative = sp.diff(obj, var, p - q + col + line + 1)
+                        derivativeAtZero = derivative.subs(var, 0)
                         factorialN = sp.factorial(p - q + col + line + 1)
                         if float_precision:
                             an_float = sp.N(derivativeAtZero, float_precision) / sp.N(
@@ -138,7 +92,7 @@ def hankel_matrix(obj, p, q, float_precision=False):
         return None
 
 
-def indep_variables(obj, p, q, float_precision = False):
+def indep_variables(obj, p, q, var, float_precision = False):
     """
     Function to calculate the independent variables b of
     system Ax=b, where A is the Hankel matrix.
@@ -192,8 +146,8 @@ def indep_variables(obj, p, q, float_precision = False):
 
         else:
             for col in range(0, q):
-                derivative = sp.diff(obj, x, p + col + 1)
-                derivativeAtZero = derivative.subs(x, 0)
+                derivative = sp.diff(obj, var, p + col + 1)
+                derivativeAtZero = derivative.subs(var, 0)
                 factorialN = sp.factorial(p + col + 1)
                 if float_precision:
                     an_float = sp.N(derivativeAtZero, float_precision) / sp.N(
@@ -211,7 +165,7 @@ def indep_variables(obj, p, q, float_precision = False):
         return None
 
 
-def coefficients_for_numerator(obj, p, q, float_precision = False):
+def coefficients_for_numerator(obj, p, q, var, float_precision = False):
     """
     Function to calculate obj Maclaurin coefficient for
     numerator coefficient calculation.
@@ -277,8 +231,8 @@ def coefficients_for_numerator(obj, p, q, float_precision = False):
                     else:
                         cA[col] = 0
                 else:
-                    derivative = sp.diff(obj, x, p - col)
-                    derivativeAtZero = derivative.subs(x, 0)
+                    derivative = sp.diff(obj, var, p - col)
+                    derivativeAtZero = derivative.subs(var, 0)
                     factorialN = sp.factorial(p - col)
                     if float_precision:
                         an_float = sp.N(derivativeAtZero, float_precision) / sp.N(
@@ -342,7 +296,7 @@ def denominator_coefficients(A, a, q, float_precision = False):
             return None
 
 
-def numerator_coefficients(obj, p, q, bn, float_precision = False):
+def numerator_coefficients(obj, p, q, var, bn, float_precision = False):
     """
     Function to calculate the [p/q](x) Padé approximant numerator
     coefficients. 
@@ -371,19 +325,19 @@ def numerator_coefficients(obj, p, q, bn, float_precision = False):
     c = sp.zeros(1, p + 1)
     if p < q:
         for col in range(1, p + 2):
-            An = sp.Matrix(coefficients_for_numerator(obj, p, q, float_precision)[-col:])
+            An = sp.Matrix(coefficients_for_numerator(obj, p, q, var, float_precision)[-col:])
             Bn = sp.Matrix(bn[0:col])
             c[col - 1] = sp.Transpose(An) * Bn
     else:
         col = 1
         while col <= q + 1:
-            An = sp.Matrix(coefficients_for_numerator(obj, p, q, float_precision)[-col:])
+            An = sp.Matrix(coefficients_for_numerator(obj, p, q, var, float_precision)[-col:])
             Bn = sp.Matrix(bn[0:col])
             c[col - 1] = sp.Transpose(An) * Bn
             col += 1
             j = -1
         while col <= p + 1:
-            An = sp.Matrix(coefficients_for_numerator(obj, p, q, float_precision)[-col:j])
+            An = sp.Matrix(coefficients_for_numerator(obj, p, q, var, float_precision)[-col:j])
             Bn = sp.Matrix(bn[0:])
             c[col - 1] = sp.Transpose(An) * Bn
             col += 1
@@ -391,7 +345,7 @@ def numerator_coefficients(obj, p, q, bn, float_precision = False):
     return c
 
 
-def pade(p, q, obj, float_precision = 0):
+def pade(p, q, var, obj, float_precision = 0):
     """
     Function to construct the [p/q](x) Padé approximant using the 
     direct algorithm.
@@ -425,7 +379,7 @@ def pade(p, q, obj, float_precision = 0):
             f"Inputed values: {p, q, float_precision}",
         )
         return None
-    A = hankel_matrix(obj, p, q, float_precision)
+    A = hankel_matrix(obj, p, q, var, float_precision)
     if f"{type(A)}" != "<class 'sympy.matrices.dense.MutableDenseMatrix'>":
         print(f"Undifined Hankel matrix A. {A}")
         return None
@@ -433,8 +387,8 @@ def pade(p, q, obj, float_precision = 0):
         """Denominator calculation"""
         Dx = sp.zeros(q + 1, 1)
         for row in range(0, q + 1):
-            Dx[row] = x ** (row)
-            B = sp.transpose(indep_variables(obj, p, q, float_precision))
+            Dx[row] = var ** (row)
+            B = sp.transpose(indep_variables(obj, p, q, var, float_precision))
             bn = denominator_coefficients(A, B, q, float_precision)
             if float_precision:
                 B = sp.N(B, float_precision)
@@ -443,11 +397,11 @@ def pade(p, q, obj, float_precision = 0):
             """ Numerator calculation """
             Nx = sp.zeros(p + 1, 1)
             for col in range(0, p + 1):
-                Nx[col] = x ** (col)
-            cn = numerator_coefficients(obj, p, q, bn, float_precision)
+                Nx[col] = var ** (col)
+            cn = numerator_coefficients(obj, p, q, var, bn, float_precision)
             Numerator = sp.expand(sp.simplify(cn * Nx))
             """ Pade approximant """
-            Pade = sp.Poly(Numerator[0], x) / sp.Poly(Denominator[0], x)
+            Pade = sp.Poly(Numerator[0], var) / sp.Poly(Denominator[0], var)
         return Pade
     else:
         print(
@@ -459,9 +413,7 @@ def pade(p, q, obj, float_precision = 0):
 
 
 if __name__ == "__main__":
-    x = sp.Symbol("x")
+    var = sp.Symbol("x")
     print()
-    print(pade(3, 3, sp.exp(x)))
+    print(pade(3, 3, var, sp.exp(var)))
     print()
-else:
-    x = sp.Symbol("x")
