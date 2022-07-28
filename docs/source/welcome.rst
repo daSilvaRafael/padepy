@@ -6,6 +6,7 @@ padepy is a Python library for Padé approximation calculation with infinite (al
 
 .. toctree::
 
+   instalation
    history
    notebook/definition
    notebook/direct_algorithm
