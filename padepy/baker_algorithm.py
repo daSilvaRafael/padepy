@@ -1,43 +1,36 @@
 import sympy as sp
-from maclaurin import polynomial
-
-
+from padepy.maclaurin import polynomial
 
 
 def pade(p, q, var, obj=[], float_precision=0, not_full_path=True):
-    """Function to construct the [p/q](x) Padé approximant using the 
-    Baker's recursive algorithm.
-    
-    :param p: degree of the Padé approximant numerator
-    :type p: int    
-    
-    :param q: degree of the Padé approximant denominator
-    
-    :type q: int    
-    
-    :param  obj: The obj parameter can be a list of real number, a user defined function,
-        or sympy bulti-in function like sin, cos, log, and exp. The default empty list a
-        allows to calculate some Padé approximants generic expressions. 
-    
-    :type obj: (list, sympy.core.mul.Mul or sympy bulti-in function)
+    """Function to calculate the [p/q](x) Padé approximant using the Baker's recursive algorithm.
 
-    :param  float_precision: floating point precision. Note that the default value 0 
-        is for infinite (algebric) precicion.
-   
+    :param p: degree of the Padé approximant numerator.
+    :type p: int
+
+    :param q: degree of the Padé approximant denominator.
+    :type q: int
+
+    :param var: function variable.
+    :type var: sympy.core.symbol.Symbol
+
+    :param  obj: The obj can be a list of real number, a user defined function,
+        or sympy bulti-in function like sin, cos, log, and exp. The default empty list
+        allows to calculate the Padé approximants generic expressions.
+    :type obj: list, sympy.core.mul.Mul, or sympy bulti-in function type
+
+    :param  float_precision: floating point precision. Default value 0 for infinite (algebric) precicion.
     :type float_precision: int
 
-    :param  not_full_path: if set to True the Padé approximants from [p/q](x) 
-        to [0/p+q](x) will be costructed. Otherwise the algorithm stops
-        once the [p/q](x) is constructed.
-    
+    :param  not_full_path: if set to True the Padé approximants from [p+q/0](x)
+    to [0/p+q](x) will be ostructed. If False, from [p+q/0](x) to [p/q](x).
     :type not_full_path: bool
 
-    
-    :returns: The first return is the [p/q](x) Padé approximant and the second is a matrix with all 
-        Padé approcimant contruct until [p/q](x) or all Padé aproximants from [p+q/1](x)
-        to [0/p+q](x) if not_full_pathset to True.
 
-    :rtype: tuple(sympy.core.mul.Mul, sympy.matrices.dense.MutableDenseMatrix)        
+    :returns: The first return is the [p/q](x) Padé approximant. The second is a matrix with all
+        Padé approximants contruct until [p/q](x), or all Padé aproximants from [p+q/0](x)
+        to [0/p+q](x) if not_full_path set to True.
+    :rtype: tuple (sympy.core.mul.Mul, sympy.matrices.dense.MutableDenseMatrix)
     """
 
     if type(float_precision) != int or type(p) != int or type(q) != int:
@@ -48,12 +41,11 @@ def pade(p, q, var, obj=[], float_precision=0, not_full_path=True):
         return (None, None)
     n = p + q
     if obj == []:
-        for i in range(0, n + 1):
-            obj.append(f"a{i}")
+        obj = [f"a{i}" for i in range(0, n + 1)]
     max_iter = 2 * n - 1
     Numerator = sp.zeros(2 + max_iter, 1)
     Denominator = sp.zeros(2 + max_iter, 1)
-    f_n = polynomial(obj, p, q, var, float_precision)
+    f_n = polynomial(p, q, var, obj, float_precision)
     if f_n is None:
         return None
     Numerator[0] = f_n
@@ -65,7 +57,7 @@ def pade(p, q, var, obj=[], float_precision=0, not_full_path=True):
         print(f"O(N({var})) < O({var}^{n}) for [{n},0]. Pade's table is not normal.")
         return (None, None)
     Denominator[0] = 1
-    f_n_1 = polynomial(obj, p - 1, q, var, float_precision)
+    f_n_1 = polynomial(p - 1, q, var, obj, float_precision)
     Numerator[1] = f_n_1
     N1 = Ni = sp.Poly(Numerator[1], var)
     if N1.coeff_monomial(var ** (n - 1)) == 0:
@@ -129,7 +121,7 @@ def pade(p, q, var, obj=[], float_precision=0, not_full_path=True):
             c1 = lastNumCoeffs.coeffs()[0]
             c2 = c1 - c0
             if c2 == 0:
-                print (
+                print(
                     f"Baker's algorithm fail to construct [{n - m - 1},{m}].",
                     f"The normalization coefficient with {float_precision} decimal precison is 0 = {c1} - {c0} ,",
                     f"which implies [{n - m - 1},{m}] = inf / inf.",
@@ -179,4 +171,3 @@ if __name__ == "__main__":
     print()
     print(pd)
     print()
-

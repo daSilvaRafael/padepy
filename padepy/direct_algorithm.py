@@ -2,31 +2,30 @@ import sympy as sp
 from scipy.linalg import lu_solve
 
 
+def hankel_matrix(p, q, var, obj, float_precision=False):
+    """Function to calculate qxq Hankel matrix.
+
+    :param p: degree of the Padé approximant numerator.
+    :type p: int
+
+    :param q: degree of the Padé approximant denominator.
+    :type q: int
+
+    :param var: function variable
+    :type var: sympy.core.symbol.Symbol
+
+    :param  obj: The obj can be a list of real number, a user defined function,
+        or sympy bulti-in function like sin, cos, log, and exp. The default empty list
+        allows to calculate the Padé approximants generic expressions.
+    :type obj: list, sympy.core.mul.Mul, or sympy bulti-in function
+
+    :param  float_precision: floating point precision. Default value False
+            for infinite (algebric) precicion.
+    :type float_precision: int
 
 
-def hankel_matrix(obj, p, q, var, float_precision=False):
-    """
-    Function to calculate qxq Hankel matrix.
-    
-    Parameters
-    ----------
-    obj: list, sympy.core.mul.Mul or sympy bulti-in function  
-        The obj parameter can be a list of real number, a user defined function, or 
-        sympy bulti-in function like sin, cos, log, and exp.
-
-    p: int
-        degree of the Padé approximant numerator
-
-    q: int
-        degree of the Padé approximant denominator
-
-    float_precision: int
-        floating point precision. Note that the default value 0 
-        is for infinite (algebric) precicion.
-        
-    Returns
-    -------
-    sympy.matrices.dense.MutableDenseMatrix  
+    :returns: qxq Hankel matrix
+    :rtype: sympy.matrices.dense.MutableDenseMatrix
     """
 
     A = sp.zeros(q, q)
@@ -92,31 +91,32 @@ def hankel_matrix(obj, p, q, var, float_precision=False):
         return None
 
 
-def indep_variables(obj, p, q, var, float_precision = False):
+def independent_vars(p, q, var, obj, float_precision=False):
+    """Function to calculate the independent variables of
+    system Ab=a, where A is the qxq Hankel matrix.
+
+    :param p: degree of the Padé approximant numerator.
+    :type p: int
+
+    :param q: degree of the Padé approximant denominator.
+    :type q: int
+
+    :param var: function variable.
+    :type var: sympy.core.symbol.Symbol
+
+    :param  obj: The obj can be a list of real number, a user defined function,
+        or sympy bulti-in function like sin, cos, log, and exp. The default empty list
+        allows to calculate the Padé approximants generic expressions.
+    :type obj: list, sympy.core.mul.Mul, or sympy bulti-in function
+
+    :param  float_precision: floating point precision. Default value False
+            for infinite (algebric) precicion.
+    :type float_precision: int
+
+    :returns: matrix of coefficients.
+    :rtype: sympy.matrices.dense.MutableDenseMatrix
     """
-    Function to calculate the independent variables b of
-    system Ax=b, where A is the Hankel matrix.
-    
-    Parameters
-    ----------
-    obj: list, sympy.core.mul.Mul or sympy bulti-in function  
-        The obj parameter can be a list of real number, a user defined function, or 
-        sympy bulti-in function like sin, cos, log, and exp.
 
-    p: int
-        degree of the Padé approximant numerator
-
-    q: int
-        degree of the Padé approximant denominator
-
-    float_precision: int
-        floating point precision. Note that the default value 0 
-        is for infinite (algebric) precicion.
-        
-    Returns
-    -------
-    sympy.matrices.dense.MutableDenseMatrix   
-    """
     a = sp.zeros(1, q)
     try:
         if type(obj) == list:
@@ -165,30 +165,31 @@ def indep_variables(obj, p, q, var, float_precision = False):
         return None
 
 
-def coefficients_for_numerator(obj, p, q, var, float_precision = False):
-    """
-    Function to calculate obj Maclaurin coefficient for
+def coefficients_for_numerator(p, q, var, obj, float_precision=False):
+    """Function to calculate obj Maclaurin polynomial coefficient for
     numerator coefficient calculation.
-    
-    Parameters
-    ----------
-    obj: list, sympy.core.mul.Mul or sympy bulti-in function  
-        The obj parameter can be a list of real number, a user defined function, or 
-        sympy bulti-in function like sin, cos, log, and exp.
 
-    p: int
-        degree of the Padé approximant numerator
+    :param p: degree of the Padé approximant numerator.
+    :type p: int
 
-    q: int
-        degree of the Padé approximant denominator
+    :param q: degree of the Padé approximant denominator.
+    :type q: int
 
-    float_precision: int
-        floating point precision. Note that the default value 0 
-        is for infinite (algebric) precicion.
-        
-    Returns
-    -------
-    sympy.matrices.dense.MutableDenseMatrix 
+    :param var: function variable.
+    :type var: sympy.core.symbol.Symbol
+
+    :param  obj: The obj can be a list of real number, a user defined function,
+        or sympy bulti-in function like sin, cos, log, and exp. The default empty list
+        allows to calculate the Padé approximants generic expressions.
+    :type obj: list, sympy.core.mul.Mul, or sympy bulti-in function
+
+    :param  float_precision: floating point precision. Default value False
+            for infinite (algebric) precicion.
+    :type float_precision: int
+
+
+    :returns:  matrix of coefficients.
+    :rtype: sympy.matrices.dense.MutableDenseMatrix
     """
 
     cA = sp.zeros(1, p + 1)
@@ -250,29 +251,24 @@ def coefficients_for_numerator(obj, p, q, var, float_precision = False):
         return None
 
 
-def denominator_coefficients(A, a, q, float_precision = False):
-    """
-    Function to solve the system Ax=b, where A is the Hankel matrix.
-    and x the [p/q](x) Padé approximant denominator coefficients. 
-    Parameters
-    ----------
-    obj: list, sympy.core.mul.Mul or sympy bulti-in function  
-        The obj parameter can be a list of real number, a user defined function, or 
-        sympy bulti-in function like sin, cos, log, and exp.
+def denominator_coeffs(A, a, q, float_precision=False):
+    """Function to solve the system Ab=a.
 
-    p: int
-        degree of the Padé approximant numerator
+    :param A: qxq Hankel matrix.
+    :type A: sympy.matrices.dense.MutableDenseMatrix
 
-    q: int
-        degree of the Padé approximant denominator
+    :param a: independent variables of system Ab=a.
+    :type a: sympy.matrices.dense.MutableDenseMatrix
 
-    float_precision: int
-        floating point precision. Note that the default value 0 
-        is for infinite (algebric) precicion.
-        
-    Returns
-    -------
-    sympy.matrices.dense.MutableDenseMatrix    
+    :param q: degree of the Padé approximant denominator.
+    :type q: int
+
+    :param  float_precision: floating point precision. Default value False
+            for infinite (algebric) precicion.
+    :type float_precision: int
+
+    :returns: [p/q](x) Padé approximant denominator coefficients.
+    :rtype: sympy.matrices.dense.MutableDenseMatrix
     """
 
     b = sp.zeros(1, q + 1)
@@ -296,48 +292,52 @@ def denominator_coefficients(A, a, q, float_precision = False):
             return None
 
 
-def numerator_coefficients(obj, p, q, var, bn, float_precision = False):
+def numerator_coeffs(p, q, var, obj, bn, float_precision=False):
+    """Function to calculate the [p/q](x) Padé approximant numerator
+    coefficients.
+
+    :param p: degree of the Padé approximant numerator.
+    :type p: int
+
+    :param q: degree of the Padé approximant denominator.
+    :type q: int
+
+    :param var: function variable.
+    :type var: sympy.core.symbol.Symbol
+
+    :param  obj: The obj can be a list of real number, a user defined function,
+        or sympy bulti-in function like sin, cos, log, and exp. The default empty list
+        allows to calculate the Padé approximants generic expressions.
+    :type obj: list, sympy.core.mul.Mul, or sympy bulti-in function
+
+    :param bn: [p/q](x) Padé approximant denominator coefficients.
+    :type var: sympy.matrices.dense.MutableDenseMatrix
+
+    :param  float_precision: floating point precision. Default value False
+            for infinite (algebric) precicion.
+    :type float_precision: int
+
+
+    :returns: [p/q](x) Padé approximant numerator coefficients.
+    :rtype: sympy.matrices.dense.MutableDenseMatrix
     """
-    Function to calculate the [p/q](x) Padé approximant numerator
-    coefficients. 
-    
-    Parameters
-    ----------
-    obj: list, sympy.core.mul.Mul or sympy bulti-in function  
-        The obj parameter can be a list of real number, a user defined function, or 
-        sympy bulti-in function like sin, cos, log, and exp.
 
-    p: int
-        degree of the Padé approximant numerator
-
-    q: int
-        degree of the Padé approximant denominator
-
-    float_precision: int
-        floating point precision. Note that the default value 0 
-        is for infinite (algebric) precicion.
-        
-    Returns
-    -------
-    sympy.matrices.dense.MutableDenseMatrix
-        qxq Hankel matrix.     
-    """    
     c = sp.zeros(1, p + 1)
     if p < q:
         for col in range(1, p + 2):
-            An = sp.Matrix(coefficients_for_numerator(obj, p, q, var, float_precision)[-col:])
+            An = sp.Matrix(coefficients_for_numerator(p, q, var, obj, float_precision)[-col:])
             Bn = sp.Matrix(bn[0:col])
             c[col - 1] = sp.Transpose(An) * Bn
     else:
         col = 1
         while col <= q + 1:
-            An = sp.Matrix(coefficients_for_numerator(obj, p, q, var, float_precision)[-col:])
+            An = sp.Matrix(coefficients_for_numerator(p, q, var, obj, float_precision)[-col:])
             Bn = sp.Matrix(bn[0:col])
             c[col - 1] = sp.Transpose(An) * Bn
             col += 1
             j = -1
         while col <= p + 1:
-            An = sp.Matrix(coefficients_for_numerator(obj, p, q, var, float_precision)[-col:j])
+            An = sp.Matrix(coefficients_for_numerator(p, q, var, obj, float_precision)[-col:j])
             Bn = sp.Matrix(bn[0:])
             c[col - 1] = sp.Transpose(An) * Bn
             col += 1
@@ -345,32 +345,31 @@ def numerator_coefficients(obj, p, q, var, bn, float_precision = False):
     return c
 
 
-def pade(p, q, var, obj, float_precision = 0):
-    """
-    Function to construct the [p/q](x) Padé approximant using the 
+def pade(p, q, var, obj, float_precision=0):
+    """Function to calculate the [p/q](x) Padé approximant using the
     direct algorithm.
-    
-    Parameters
-    ----------
-    p: int
-        degree of the Padé approximant numerator
 
-    q: int
-        degree of the Padé approximant denominator
+    :param p: degree of the Padé approximant numerator.
+    :type p: int
 
-    obj: list, sympy.core.mul.Mul or sympy bulti-in function  
-        The obj parameter can be a list of real number, a user defined function, or 
-        sympy bulti-in function like sin, cos, log, and exp. 
-        The default empty list allows to calculate some Padé approximants expressions with unknown coefficients. 
+    :param q: degree of the Padé approximant denominator.
+    :type q: int
 
-    float_precision: int
-        floating point precision. Note that the default value 0 
-        is for infinite (algebric) precicion.
+    :param var: function variable.
+    :type var: sympy.core.symbol.Symbol
 
-    Returns
-    -------
-    sympy.core.mul.Mul
-        Return the [p/q](x) Padé approximant.
+    :param  obj: The obj can be a list of real number, a user defined function,
+        or sympy bulti-in function like sin, cos, log, and exp. The default empty list
+        allows to calculate the Padé approximants generic expressions.
+    :type obj: list, sympy.core.mul.Mul, or sympy bulti-in function type
+
+    :param  float_precision: floating point precision. Default value 0
+            for infinite (algebric) precicion.
+    :type float_precision: int
+
+
+    :returns: [p/q](x) Padé approximant.
+    :rtype: sympy.core.mul.Mul
     """
 
     if type(float_precision) != int or type(p) != int or type(q) != int:
@@ -379,7 +378,7 @@ def pade(p, q, var, obj, float_precision = 0):
             f"Inputed values: {p, q, float_precision}",
         )
         return None
-    A = hankel_matrix(obj, p, q, var, float_precision)
+    A = hankel_matrix(p, q, var, obj, float_precision)
     if f"{type(A)}" != "<class 'sympy.matrices.dense.MutableDenseMatrix'>":
         print(f"Undifined Hankel matrix A. {A}")
         return None
@@ -388,8 +387,8 @@ def pade(p, q, var, obj, float_precision = 0):
         Dx = sp.zeros(q + 1, 1)
         for row in range(0, q + 1):
             Dx[row] = var ** (row)
-            B = sp.transpose(indep_variables(obj, p, q, var, float_precision))
-            bn = denominator_coefficients(A, B, q, float_precision)
+            B = sp.transpose(independent_vars(p, q, var, obj, float_precision))
+            bn = denominator_coeffs(A, B, q, float_precision)
             if float_precision:
                 B = sp.N(B, float_precision)
                 bn = sp.N(bn, float_precision)
@@ -398,7 +397,7 @@ def pade(p, q, var, obj, float_precision = 0):
             Nx = sp.zeros(p + 1, 1)
             for col in range(0, p + 1):
                 Nx[col] = var ** (col)
-            cn = numerator_coefficients(obj, p, q, var, bn, float_precision)
+            cn = numerator_coeffs(p, q, var, obj, bn, float_precision)
             Numerator = sp.expand(sp.simplify(cn * Nx))
             """ Pade approximant """
             Pade = sp.Poly(Numerator[0], var) / sp.Poly(Denominator[0], var)
@@ -408,8 +407,6 @@ def pade(p, q, var, obj, float_precision = 0):
             f"The Hankel matrix determinant = {A.det()}. The system Ab = c is impossible or undetermined."
         )
         return None
-
-
 
 
 if __name__ == "__main__":

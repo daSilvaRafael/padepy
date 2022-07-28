@@ -3,31 +3,38 @@ import sympy as sp
 
 def rational_number(a, b):
     """Function to set rational number.
-    
-    :param a: Numerator 
-    :type a: int    
 
-    :param b: Numerator 
-    :type b: int   
-    
-    :returns: a rational number  
+    :param a: numerator.
+    :type a: int
+
+    :param b: denominator.
+    :type b: int
+
+
+    :returns: a rational number.
     :rtype: sympy.core.numbers.Rational
     """
-    
+
     return sp.Rational(a) / sp.Rational(b)
 
 
-def coefficients(func, var, n):
+def coefficients(n, var, func):
     """Function to calculate the first n coefficients
-    of func Maclaurin expansion. 
-    
-    Args:
-        func (int): function to apply the Maclaurin expansion 
+    of the Maclaurin expansion.
 
-        n (int): number of coefficients
-    
-    Returns:
-        sympy.core.numbers.Rational: a rational number     
+    :param n: number of coefficients.
+    :type n: int
+
+    :param var: function variable.
+    :type var: sympy.core.symbol.Symbol
+
+    :param func: User defined function, or sympy bulti-in function like
+        sin, cos, log, and exp.
+    :type func: sympy.core.mul.Mul or sympy bulti-in function type
+
+
+    :returns: list with n coefficients.
+    :rtype:  list
     """
 
     coef = []
@@ -38,33 +45,29 @@ def coefficients(func, var, n):
     return coef
 
 
-def polynomial(obj, p, q,var, float_precision=0):
-    """
-    Function to construct Maclaurin polynomial of order n = p + q
-    
-    Parameters
-    ----------
-    obj: list, sympy.core.mul.Mul or sympy bulti-in function  
-        The obj parameter can be a list of real number, a user defined function, or 
-        sympy bulti-in function like sin, cos, log, and exp.
+def polynomial(p, q, var, obj, float_precision=0):
+    """Function to calculate the Maclaurin polynomial of order n = p + q
 
-    p: int
-        degree of the Padé approximant numerator
+    :param p: degree of the Padé approximant numerator.
+    :type p: int
 
-    q: int
-        degree of the Padé approximant denominator
+    :param q: degree of the Padé approximant denominator.
+    :type q: int
 
-    var: int
-        function variable
+    :param var: function variable.
+    :type var: sympy.core.symbol.Symbol
 
-    float_precision: int
-        floating point precision. Note that the default value 0 
-        is for infinite (algebric) precicion.
-        
-    Returns
-    -------
-    sympy.core.add.Add
-        Maclaurin expansion of order n = p + q     
+    :param  obj: The obj can be a list of real number, a user defined function,
+        or sympy bulti-in function like sin, cos, log, and exp.
+    :type obj: list, sympy.core.mul.Mul, or sympy bulti-in function
+
+    :param  float_precision: floating point precision. Default value 0
+           for infinite (algebric) precicion.
+    :type float_precision: int
+
+
+    :returns: Maclaurin polynomial of order n = p + q.
+    :rtype: sympy.core.add.Add
     """
 
     n = p + q
@@ -119,6 +122,3 @@ def polynomial(obj, p, q,var, float_precision=0):
             f"The obj type = {type(obj)}. The obj input must be a function or list of real numbers.",
         )
         return None
-
-
-
