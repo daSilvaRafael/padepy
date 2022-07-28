@@ -1,39 +1,17 @@
 Modules
 =======
 
+.. autosummary::
+   :toctree: generated
 
-direct_algorithm
-----------------
-
-.. currentmodule:: direct_algorithm
+   direct_algorithm
 
 .. autosummary::
+   :toctree: generated
 
-   pade
-   hankel_matrix
-   indep_variables
-   denominator_coefficients
-   coefficients_for_numerator
-   numerator_coefficients
-
-   
-baker_algorithm
----------------
-
-.. currentmodule:: baker_algorithm
+   baker_algorithm
 
 .. autosummary::
+   :toctree: generated
 
-   pade
-
-
-maclaurin
----------
-
-.. currentmodule:: maclaurin
-
-.. autosummary::
-
-   rational_number
-   coefficients
-   polynomial
+   maclaurin
