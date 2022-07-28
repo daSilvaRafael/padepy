@@ -2,7 +2,7 @@ import unittest
 import sympy as sp
 from padepy import direct_algorithm as da
 from padepy import baker_algorithm as ba
-from padepy.direct_algorithm import rational_number as r
+from padepy.maclaurin import rational_number as r
 
 var = sp.Symbol("x")
 
