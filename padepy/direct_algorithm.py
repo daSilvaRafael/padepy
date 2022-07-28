@@ -411,6 +411,7 @@ def pade(p, q, var, obj, float_precision=0):
 
 if __name__ == "__main__":
     var = sp.Symbol("x")
+    pd = pade(3, 3, var, sp.exp(var))
     print()
-    print(pade(3, 3, var, sp.exp(var)))
+    print(pd)
     print()
