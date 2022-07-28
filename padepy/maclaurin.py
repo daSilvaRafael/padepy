@@ -122,3 +122,11 @@ def polynomial(p, q, var, obj, float_precision=0):
             f"The obj type = {type(obj)}. The obj input must be a function or list of real numbers.",
         )
         return None
+
+
+if __name__ == "__main__":
+    var = sp.Symbol("x")
+    pol = polynomial(3, 3, var, sp.exp(var))
+    print()
+    print(pol)
+    print()
