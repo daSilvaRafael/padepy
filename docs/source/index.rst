@@ -3,8 +3,8 @@ Content
 .. toctree::
 
    welcome
-   guide
+   tutorials
+   modules
    usage
-   api
    about
    
