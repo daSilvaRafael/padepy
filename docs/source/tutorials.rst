@@ -1,6 +1,9 @@
 Tutorials
 =========
 
+.. toctree::
+
+   examples/exponencial
 
     
    
