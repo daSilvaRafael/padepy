@@ -37,8 +37,13 @@ templates_path = ['_templates']
 html_theme = 'sphinx_rtd_theme'
 
 html_theme_options = {
-    'prev_next_buttons_location': None
+    'logo_only': False,
+    'display_version': False,
+    'prev_next_buttons_location': 'bottom'
 }
+
+
+html_logo = "padepy.png"
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
