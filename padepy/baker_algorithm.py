@@ -59,7 +59,7 @@ def pade(p, q, var, obj=[], float_precision=0, not_full_path=True):
     Denominator[0] = 1
     f_n_1 = polynomial(p - 1, q, var, obj, float_precision)
     Numerator[1] = f_n_1
-    N1 = Ni = sp.Poly(Numerator[1], var)
+    N1 = sp.Poly(Numerator[1], var)
     if N1.coeff_monomial(var ** (n - 1)) == 0:
         print(f"O(N({var})) < O({var}^{n - 1}) for [{n - 1},0]. Pade's table is not normal.")
         return (None, None)
