@@ -390,7 +390,6 @@ def pade(p, q, var, obj, float_precision=0):
             B = sp.transpose(independent_vars(p, q, var, obj, float_precision))
             bn = denominator_coeffs(A, B, q, float_precision)
             if float_precision:
-                B = sp.N(B, float_precision)
                 bn = sp.N(bn, float_precision)
             Denominator = sp.expand(sp.simplify(bn * Dx))
             """ Numerator calculation """
