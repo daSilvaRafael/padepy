@@ -19,8 +19,8 @@ The official documentation is hosted by Read the Docs: https://padepy.readthedoc
     :scale: 100%
     :target: https://readthedocs.org/projects/padepy/builds/
 
-.. |quality| image:: https://img.shields.io/lgtm/grade/python/g/daSilvaRafael/padepy.svg?logo=lgtm&logoWidth=18)
+.. |quality| image:: https://img.shields.io/lgtm/grade/python/g/daSilvaRafael/padepy.svg?logo=lgtm&logoWidth=18
    :target: https://lgtm.com/projects/g/daSilvaRafael/padepy/context:python
 
-.. |alerts| image:: https://img.shields.io/lgtm/alerts/g/daSilvaRafael/padepy.svg?logo=lgtm&logoWidth=18)
+.. |alerts| image:: https://img.shields.io/lgtm/alerts/g/daSilvaRafael/padepy.svg?logo=lgtm&logoWidth=18
    :target: https://lgtm.com/projects/g/daSilvaRafael/padepy/alerts/
