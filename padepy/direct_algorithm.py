@@ -403,7 +403,7 @@ def pade(p, q, var, obj, float_precision=0):
         return Pade
     else:
         print(
-            f"The Hankel matrix determinant = {A.det()}. The system Ab = c is impossible or undetermined."
+            f"The Hankel matrix determinant = {A.det()}. The system Ab = a is impossible or undetermined."
         )
         return None
 
