@@ -166,8 +166,8 @@ def independent_vars(p, q, var, obj, float_precision=False):
 
 
 def coefficients_for_numerator(p, q, var, obj, float_precision=False):
-    """Function to calculate obj Maclaurin polynomial coefficient for
-    numerator coefficient calculation.
+    """Function to calculate obj Maclaurin polynomial coefficients needed
+    for numerator coefficients calculation.
 
     :param p: degree of the Padé approximant numerator.
     :type p: int
@@ -252,7 +252,8 @@ def coefficients_for_numerator(p, q, var, obj, float_precision=False):
 
 
 def denominator_coeffs(A, a, q, float_precision=False):
-    """Function to solve the system Ab=a.
+    """Function to solve the system Ab=a where b are 
+    the [p/q](x) Padé approximant numerator coefficients.
 
     :param A: qxq Hankel matrix.
     :type A: sympy.matrices.dense.MutableDenseMatrix
