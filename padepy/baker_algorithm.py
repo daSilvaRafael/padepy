@@ -3,7 +3,7 @@ from padepy.maclaurin import polynomial
 
 
 def pade(p, q, var, obj=[], float_precision=0, not_full_path=True):
-    """Function to calculate the [p/q](x) Padé approximant using Baker's algorithm.
+    """Function to calculate the [p/q](x) Padé approximant using Baker's recursive algorithm.
 
     :param p: degree of the Padé approximant numerator.
     :type p: int
