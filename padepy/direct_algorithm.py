@@ -167,7 +167,7 @@ def independent_vars(p, q, var, obj, float_precision=False):
 
 def coefficients_for_numerator(p, q, var, obj, float_precision=False):
     """Function to calculate obj Maclaurin polynomial coefficients needed
-    for numerator coefficients calculation.
+    to calculate numerator coefficients.
 
     :param p: degree of the Padé approximant numerator.
     :type p: int
