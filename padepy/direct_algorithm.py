@@ -252,8 +252,8 @@ def coefficients_for_numerator(p, q, var, obj, float_precision=False):
 
 
 def denominator_coeffs(A, a, q, float_precision=False):
-    """Function to solve the system Ab=a where b are 
-    the [p/q](x) Padé approximant numerator coefficients.
+    """Function to solve the system Ab=a where b is 
+    the [p/q](x) Padé approximant denominator coefficients.
 
     :param A: qxq Hankel matrix.
     :type A: sympy.matrices.dense.MutableDenseMatrix
