@@ -15,8 +15,7 @@ def hankel_matrix(p, q, var, obj, float_precision=False):
     :type var: sympy.core.symbol.Symbol
 
     :param  obj: The obj can be a list of real number, a user defined function,
-        or sympy bulti-in function like sin, cos, log, and exp. The default empty list
-        allows to calculate the Padé approximants generic expressions.
+        or sympy bulti-in function like sin, cos, log, and exp.
     :type obj: list, sympy.core.mul.Mul, or sympy bulti-in function
 
     :param  float_precision: floating point precision. Default value False
@@ -105,8 +104,7 @@ def independent_vars(p, q, var, obj, float_precision=False):
     :type var: sympy.core.symbol.Symbol
 
     :param  obj: The obj can be a list of real number, a user defined function,
-        or sympy bulti-in function like sin, cos, log, and exp. The default empty list
-        allows to calculate the Padé approximants generic expressions.
+        or sympy bulti-in function like sin, cos, log, and exp.
     :type obj: list, sympy.core.mul.Mul, or sympy bulti-in function
 
     :param  float_precision: floating point precision. Default value False
@@ -179,8 +177,7 @@ def coefficients_for_numerator(p, q, var, obj, float_precision=False):
     :type var: sympy.core.symbol.Symbol
 
     :param  obj: The obj can be a list of real number, a user defined function,
-        or sympy bulti-in function like sin, cos, log, and exp. The default empty list
-        allows to calculate the Padé approximants generic expressions.
+        or sympy bulti-in function like sin, cos, log, and exp.
     :type obj: list, sympy.core.mul.Mul, or sympy bulti-in function
 
     :param  float_precision: floating point precision. Default value False
@@ -307,8 +304,7 @@ def numerator_coeffs(p, q, var, obj, bn, float_precision=False):
     :type var: sympy.core.symbol.Symbol
 
     :param  obj: The obj can be a list of real number, a user defined function,
-        or sympy bulti-in function like sin, cos, log, and exp. The default empty list
-        allows to calculate the Padé approximants generic expressions.
+        or sympy bulti-in function like sin, cos, log, and exp.
     :type obj: list, sympy.core.mul.Mul, or sympy bulti-in function
 
     :param bn: [p/q](x) Padé approximant denominator coefficients.
