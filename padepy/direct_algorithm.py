@@ -360,8 +360,7 @@ def pade(p, q, var, obj, float_precision=0):
     :type var: sympy.core.symbol.Symbol
 
     :param  obj: The obj can be a list of real number, a user defined function,
-        or sympy bulti-in function like sin, cos, log, and exp. The default empty list
-        allows to calculate the Padé approximants generic expressions.
+        or sympy bulti-in function like sin, cos, log, and exp.
     :type obj: list, sympy.core.mul.Mul, or sympy bulti-in function type
 
     :param  float_precision: floating point precision. Default value 0
