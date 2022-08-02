@@ -6,9 +6,9 @@ A rational function matching a formal power series, at least to the term equal t
 
 After Padé's thesis, in the 1960s, the Padé approximants come back to the scene with Baker's works in mathematical physics [2]. 
 
-By the end of the sec XX, over 6000 references were estimated about its application in several areas, such as number theory, differential equations, numerical analysis, and fluid mechanics. For a more detailed history see [3].
+By the end of the XX century, over 6000 references were estimated about its application in several areas, such as, number theory, differential equations, numerical analysis, and fluid mechanics. For a more detailed history see [3].
 
-Claude Brezinski [4] is one of the most influential of the XX and XXI century in the study of Padé approximants.
+Claude Brezinski [4] is one of the most influential of the XX and XXI centuries in the study of Padé approximants.
 
 
 
