@@ -14,10 +14,9 @@ padepy is a Python library for Padé approximation calculation with infinite (al
    notebook/bakers_algorithm
    
 
-.. |docs| image:: https://readthedocs.org/projects/docs/badge/?version=latest
+.. |docs| image:: https://readthedocs.org/projects/padepy/badge/?version=latest
+    :target: https://padepy.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
-    :scale: 100%
-    :target: https://readthedocs.org/projects/padepy/builds/
 
 .. |quality| image:: https://img.shields.io/lgtm/grade/python/g/daSilvaRafael/padepy.svg?logo=lgtm&logoWidth=18
    :target: https://lgtm.com/projects/g/daSilvaRafael/padepy/context:python
