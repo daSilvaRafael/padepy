@@ -1,2 +1,2 @@
-sympy
-scipy
+sympy==1.12
+scipy==1.10.1
