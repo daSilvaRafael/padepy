@@ -1,3 +1,4 @@
 sympy
 scipy
 nbsphinx
+sphinx-rtd-theme
